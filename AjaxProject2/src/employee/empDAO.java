@@ -26,12 +26,14 @@ public class empDAO {
 		conn = getConnect();
 		List<Employee> list = new ArrayList<Employee>();
 		try {
-			PreparedStatement pstmt = conn.prepareStatement("select employee_id, first_name, email, salary from employees");
+			PreparedStatement pstmt = conn
+					.prepareStatement("select employee_id, first_name, email, salary from employees");
 			ResultSet rs = pstmt.executeQuery();
-			while(rs.next()) {
-				Employee emp = new Employee(rs.getInt("employee_id"), rs.getString("first_name"), rs.getString("email"), rs.getInt("salary"));
+			while (rs.next()) {
+				Employee emp = new Employee(rs.getInt("employee_id"), rs.getString("first_name"), rs.getString("email"),
+						rs.getInt("salary"));
 				list.add(emp);
-				
+
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
